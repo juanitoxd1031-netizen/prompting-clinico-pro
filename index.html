@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompting Clínico Pro: Guía Completa de ChatGPT para Medicina</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* slate-900 */
+            color: #cbd5e1; /* slate-300 */
+        }
+        .glassmorphism {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #34d399, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .tab-active {
+            background-color: #38bdf8; /* sky-400 */
+            color: #0f172a; /* slate-900 */
+        }
+        .tab-inactive {
+            background-color: #1e293b; /* slate-800 */
+            color: #94a3b8; /* slate-400 */
+        }
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            line-height: 2.5rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 glassmorphism">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i data-lucide="brain-circuit" class="text-sky-400"></i>
+                <span class="text-xl font-bold text-white">Prompting Clínico Pro</span>
+            </div>
+            <div class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="#guia" class="hover:text-sky-400 transition-colors">Guía</a>
+                <a href="#plantillas" class="hover:text-sky-400 transition-colors">Plantillas</a>
+                <a href="#casos" class="hover:text-sky-400 transition-colors">Casos de Uso</a>
+                <a href="#planes" class="hover:text-sky-400 transition-colors">Planes de Estudio</a>
+            </div>
+            <a href="#planes" class="bg-sky-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-sky-600 transition-colors">Empezar a Aprender</a>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 md:py-20">
+        <!-- Hero Section -->
+        <section class="text-center mb-20 md:mb-32">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4">
+                Domina <span class="gradient-text">ChatGPT</span> en la Práctica Clínica
+            </h1>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-slate-400">
+                La guía definitiva para estudiantes y profesionales de medicina. Transforma la IA en tu asistente clínico más poderoso.
+            </p>
+            <div class="flex justify-center space-x-4">
+                <a href="#guia" class="bg-white text-slate-900 px-6 py-3 rounded-lg font-bold hover:bg-slate-200 transition-transform transform hover:scale-105">Leer la Guía Completa</a>
+                <a href="#plantillas" class="bg-slate-800 text-white px-6 py-3 rounded-lg font-bold hover:bg-slate-700 transition-transform transform hover:scale-105">Ver Plantillas de Prompts</a>
+            </div>
+        </section>
+
+        <!-- Guide Sections -->
+        <div id="guia" class="space-y-20 md:space-y-28">
+
+            <!-- 1. ¿Qué es el prompting? -->
+            <section>
+                <h2 class="section-title text-white">1. ¿Qué es el <span class="gradient-text">Prompting</span> y su Impacto?</h2>
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-4 text-slate-300">
+                        <p>El prompting es el arte de formular instrucciones precisas para que una IA como ChatGPT genere respuestas útiles. La calidad de tu pregunta (el "prompt") determina directamente la calidad de la respuesta.</p>
+                        <p>En medicina, un buen prompting convierte a ChatGPT en un asistente de aprendizaje personalizado, capaz de resumir patologías, analizar casos clínicos y prepararte para exámenes. Ha demostrado aprobar simulaciones del USMLE y reducir el tiempo de documentación hasta en un 33%.</p>
+                        <p class="font-semibold text-sky-300">Recuerda: ChatGPT es una herramienta, no un reemplazo del juicio clínico. Su conocimiento tiene límites y puede cometer errores. El pensamiento crítico es indispensable.</p>
+                    </div>
+                    <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div class="bg-green-500/20 text-green-400 p-2 rounded-full"><i data-lucide="arrow-right-circle"></i></div>
+                            <div>
+                                <h3 class="font-bold text-white">Prompt Ineficaz</h3>
+                                <p class="text-sm text-slate-400">"Háblame de neumonía"</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-sky-500/20 text-sky-400 p-2 rounded-full"><i data-lucide="check-circle-2"></i></div>
+                            <div>
+                                <h3 class="font-bold text-white">Prompt Eficaz</h3>
+                                <p class="text-sm text-slate-400">"Actúa como infectólogo y resume el manejo de neumonía comunitaria en un paciente sin comorbilidades según la guía IDSA 2019."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Estructura de un prompt eficaz -->
+            <section>
+                <h2 class="section-title text-white">2. Anatomía de un <span class="gradient-text">Prompt Eficaz</span></h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Componentes del prompt -->
+                    <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <i data-lucide="user-square-2" class="text-sky-400"></i>
+                            <h3 class="text-lg font-bold text-white">Rol</h3>
+                        </div>
+                        <p class="text-sm text-slate-400">Asigna un papel a la IA. "Actúa como un cardiólogo experimentado" para ajustar el tono y la profundidad de la respuesta.</p>
+                    </div>
+                    <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <i data-lucide="target" class="text-sky-400"></i>
+                            <h3 class="text-lg font-bold text-white">Objetivo</h3>
+                        </div>
+                        <p class="text-sm text-slate-400">Define claramente la tarea. "Generar una lista de 5 diagnósticos diferenciales para cefalea febril."</p>
+                    </div>
+                    <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <i data-lucide="book-open-check" class="text-sky-400"></i>
+                            <h3 class="text-lg font-bold text-white">Contexto y Fuentes</h3>
+                        </div>
+                        <p class="text-sm text-slate-400">Proporciona datos del caso o indica guías a seguir. "Basado en la guía GINA 2023..."</p>
+                    </div>
+                    <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <i data-lucide="layout-template" class="text-sky-400"></i>
+                            <h3 class="text-lg font-bold text-white">Formato</h3>
+                        </div>
+                        <p class="text-sm text-slate-400">Especifica cómo quieres la respuesta. "Elabora una tabla comparativa" o "Responde con una lista numerada."</p>
+                    </div>
+                    <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <i data-lucide="shield-check" class="text-sky-400"></i>
+                            <h3 class="text-lg font-bold text-white">Control de Calidad</h3>
+                        </div>
+                        <p class="text-sm text-slate-400">Añade instrucciones para mejorar la fiabilidad. "Si una información es incierta, indícalo."</p>
+                    </div>
+                     <div class="bg-sky-900/50 p-6 rounded-2xl border border-sky-700 space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <i data-lucide="lightbulb" class="text-yellow-400"></i>
+                            <h3 class="text-lg font-bold text-white">Ejemplo Integrado</h3>
+                        </div>
+                        <p class="text-sm text-slate-400">"Como médico de urgencias, genera diagnósticos diferenciales para dolor torácico en una tabla con clínica y plan inicial."</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Plantillas de prompts clínicos -->
+            <section id="plantillas">
+                <h2 class="section-title text-white">3. Plantillas de <span class="gradient-text">Prompts Clínicos</span></h2>
+                <div x-data="{ activeTab: 1 }" class="w-full max-w-4xl mx-auto">
+                    <!-- Tabs -->
+                    <div class="flex flex-wrap justify-center gap-2 mb-6">
+                        <button @click="activeTab = 1" :class="activeTab === 1 ? 'tab-active' : 'tab-inactive'" class="px-4 py-2 text-sm font-semibold rounded-lg transition-colors">Diagnóstico Diferencial</button>
+                        <button @click="activeTab = 2" :class="activeTab === 2 ? 'tab-active' : 'tab-inactive'" class="px-4 py-2 text-sm font-semibold rounded-lg transition-colors">Manejo Clínico</button>
+                        <button @click="activeTab = 3" :class="activeTab === 3 ? 'tab-active' : 'tab-inactive'" class="px-4 py-2 text-sm font-semibold rounded-lg transition-colors">Lectura Crítica</button>
+                        <button @click="activeTab = 4" :class="activeTab === 4 ? 'tab-active' : 'tab-inactive'" class="px-4 py-2 text-sm font-semibold rounded-lg transition-colors">Caso Interactivo</button>
+                        <button @click="activeTab = 5" :class="activeTab === 5 ? 'tab-active' : 'tab-inactive'" class="px-4 py-2 text-sm font-semibold rounded-lg transition-colors">Preguntas de Examen</button>
+                    </div>
+                    <!-- Tab Content -->
+                    <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 min-h-[300px]">
+                        <div x-show="activeTab === 1" x-transition>
+                            <h4 class="text-xl font-bold text-white mb-2">A. Diagnóstico Diferencial</h4>
+                            <p class="text-sm text-slate-400 mb-4">Genera una lista jerarquizada de posibles diagnósticos a partir de un caso clínico.</p>
+                            <pre id="prompt1" class="bg-slate-900 text-sm p-4 rounded-lg overflow-x-auto text-slate-300">
+Eres un médico internista con 10 años de experiencia. Tu tarea es analizar el siguiente caso clínico y proponer un diagnóstico diferencial jerarquizado:
+
+**Caso:** Paciente mujer de 35 años con cefalea intensa de inicio súbito, fiebre de 38.5°C y rigidez de nuca. Antecedentes: sinusitis crónica. 
+
+1. Enumera al menos 5 posibles diagnósticos diferenciales, del más al menos probable. 
+2. Justifica brevemente cada diagnóstico con datos del caso.
+3. Indica qué dato clave (estudio, análisis) podría ayudar a confirmar o descartar cada posibilidad.
+
+Formato de respuesta: lista numerada con el diagnóstico en negritas, seguido de la justificación y prueba diagnóstica.
+                            </pre>
+                            <button onclick="copyPrompt('prompt1')" class="mt-4 bg-sky-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-sky-600 transition-colors flex items-center space-x-2"><i data-lucide="copy"></i><span>Copiar Prompt</span></button>
+                        </div>
+                        <div x-show="activeTab === 2" x-transition>
+                            <h4 class="text-xl font-bold text-white mb-2">B. Manejo Clínico y Algoritmos</h4>
+                            <p class="text-sm text-slate-400 mb-4">Obtén un plan de manejo paso a paso o un algoritmo de decisión.</p>
+                            <pre id="prompt2" class="bg-slate-900 text-sm p-4 rounded-lg overflow-x-auto text-slate-300">
+Actúa como especialista en medicina de urgencias. Elabora un algoritmo de manejo inicial para la siguiente situación clínica, basándote en guías actuales.
+
+**Situación:** Paciente varón de 58 años, con dolor torácico opresivo 8/10 irradiado a brazo izquierdo, sudoración, de 30 min de evolución. TA 90/60, FC 110.
+
+Elabora un plan cronológico que incluya:
+- Acciones inmediatas (soporte, monitoreo, medicación).
+- Pruebas diagnósticas urgentes.
+- Criterios para terapia de reperfusión.
+
+Usa viñetas o una lista numerada.
+                            </pre>
+                             <button onclick="copyPrompt('prompt2')" class="mt-4 bg-sky-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-sky-600 transition-colors flex items-center space-x-2"><i data-lucide="copy"></i><span>Copiar Prompt</span></button>
+                        </div>
+                        <div x-show="activeTab === 3" x-transition>
+                            <h4 class="text-xl font-bold text-white mb-2">C. Lectura Crítica de Evidencia</h4>
+                            <p class="text-sm text-slate-400 mb-4">Analiza un artículo científico o busca evidencia para una pregunta clínica.</p>
+                            <pre id="prompt3" class="bg-slate-900 text-sm p-4 rounded-lg overflow-x-auto text-slate-300">
+Eres un asesor de investigación clínica. Analiza de forma crítica el siguiente resumen de estudio:
+
+**Estudio:** ECA de 2023 compara dexametasona vs. prednisona en exacerbaciones de asma. Desenlace: reingreso a 30 días. Resultados: dexametasona (dosis única) no fue inferior a prednisona (5 días).
+
+**Tarea:**
+1. Evalúa la calidad metodológica (diseño, sesgos).
+2. Resume la conclusión y su relevancia clínica según GINA.
+3. Comenta si los resultados apoyan un cambio en la práctica clínica.
+
+Organiza la respuesta en secciones: Metodología, Resultados y Aplicabilidad.
+                            </pre>
+                             <button onclick="copyPrompt('prompt3')" class="mt-4 bg-sky-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-sky-600 transition-colors flex items-center space-x-2"><i data-lucide="copy"></i><span>Copiar Prompt</span></button>
+                        </div>
+                        <div x-show="activeTab === 4" x-transition>
+                            <h4 class="text-xl font-bold text-white mb-2">D. Generación de Casos Interactivos</h4>
+                            <p class="text-sm text-slate-400 mb-4">Crea una simulación de consulta para practicar habilidades de anamnesis y razonamiento.</p>
+                            <pre id="prompt4" class="bg-slate-900 text-sm p-4 rounded-lg overflow-x-auto text-slate-300">
+Adopta el rol de un paciente estandarizado y un evaluador médico. Vamos a simular un caso clínico interactivo.
+
+**Instrucciones:**
+1. Presenta la situación inicial de un paciente (sin revelar el diagnóstico).
+2. Espera mis preguntas como si yo fuera el médico y responde de forma realista como el paciente.
+3. Al final, dame retroalimentación sobre la calidad de mi abordaje.
+
+**Caso inicial:** Juan Pérez, 45 años. Consulta por dolor abdominal difuso de 2 días.
+
+Tu primera respuesta debe ser la presentación del paciente en primera persona. Luego, espera mis preguntas.
+                            </pre>
+                             <button onclick="copyPrompt('prompt4')" class="mt-4 bg-sky-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-sky-600 transition-colors flex items-center space-x-2"><i data-lucide="copy"></i><span>Copiar Prompt</span></button>
+                        </div>
+                        <div x-show="activeTab === 5" x-transition>
+                             <h4 class="text-xl font-bold text-white mb-2">E. Generación de Preguntas de Examen</h4>
+                            <p class="text-sm text-slate-400 mb-4">Produce preguntas de opción múltiple estilo ENARM/USMLE para autoevaluación.</p>
+                            <pre id="prompt5" class="bg-slate-900 text-sm p-4 rounded-lg overflow-x-auto text-slate-300">
+Actúa como un banco de preguntas estilo ENARM. Genera 3 preguntas de opción múltiple difíciles sobre "sepsis y choque séptico".
+
+**Requisitos:**
+- Formato de caso clínico corto.
+- 5 opciones verosímiles (A-E), solo una correcta.
+- Marca la respuesta correcta y proporciona una explicación razonada para cada opción, basándote en las guías Surviving Sepsis 2021.
+                            </pre>
+                             <button onclick="copyPrompt('prompt5')" class="mt-4 bg-sky-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-sky-600 transition-colors flex items-center space-x-2"><i data-lucide="copy"></i><span>Copiar Prompt</span></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 4. Casos de uso médicos -->
+            <section id="casos">
+                <h2 class="section-title text-white">4. <span class="gradient-text">Casos de Uso</span> en Acción</h2>
+                <div class="space-y-12">
+                    <!-- Caso 1: Neumonía -->
+                    <div class="grid md:grid-cols-3 gap-8 bg-slate-800 p-8 rounded-2xl border border-slate-700">
+                        <div class="md:col-span-1">
+                            <div class="flex items-center space-x-3 mb-2">
+                                <i data-lucide="lungs" class="text-sky-400"></i>
+                                <h3 class="text-2xl font-bold text-white">Neumonía Comunitaria</h3>
+                            </div>
+                            <p class="text-sm text-slate-400">Paciente de 40 años, sano, con fiebre, tos productiva y crépitos en base derecha.</p>
+                        </div>
+                        <div class="md:col-span-2 space-y-4">
+                            <div>
+                                <h4 class="font-semibold text-white">Prompt Utilizado:</h4>
+                                <p class="text-sm bg-slate-700 p-3 rounded-md mt-1">"Eres un infectólogo. Para un paciente con sospecha de NAC, indica patógenos típicos, estudios a solicitar (incluyendo escala CURB-65) y tratamiento empírico según guías IDSA/ATS."</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">Respuesta Esperada y Verificación:</h4>
+                                <p class="text-sm text-slate-400 mt-1">ChatGPT debería identificar el bajo riesgo (CURB-65=0), sugerir manejo ambulatorio y recomendar amoxicilina 1g TID como primera línea, lo cual se alinea con la guía ATS/IDSA 2019. Se debe verificar que no recomiende macrólidos en monoterapia como primera opción debido a las resistencias.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Caso 2: IAMCEST -->
+                     <div class="grid md:grid-cols-3 gap-8 bg-slate-800 p-8 rounded-2xl border border-slate-700">
+                        <div class="md:col-span-1">
+                            <div class="flex items-center space-x-3 mb-2">
+                                <i data-lucide="heart-pulse" class="text-sky-400"></i>
+                                <h3 class="text-2xl font-bold text-white">Infarto Agudo (IAMCEST)</h3>
+                            </div>
+                            <p class="text-sm text-slate-400">Paciente de 60 años, fumador, con dolor torácico opresivo y elevación del ST en V2-V4.</p>
+                        </div>
+                        <div class="md:col-span-2 space-y-4">
+                            <div>
+                                <h4 class="font-semibold text-white">Prompt Utilizado:</h4>
+                                <p class="text-sm bg-slate-700 p-3 rounded-md mt-1">"Eres un cardiólogo. Describe las prioridades de manejo en los primeros minutos de un IAM anterior con elevación del ST, incluyendo medicamentos y estrategia de reperfusión con tiempos meta según guías ESC."</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">Respuesta Esperada y Verificación:</h4>
+                                <p class="text-sm text-slate-400 mt-1">La IA debe priorizar la angioplastia primaria (ICP) con un tiempo puerta-balón <90 min. Debe mencionar la doble antiagregación (AAS + un inhibidor P2Y12 como ticagrelor) y anticoagulación. La verificación es crítica para asegurar que la reperfusión sea el eje central de la respuesta.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+             <!-- 5. Rutina de Entrenamiento Semanal -->
+            <section>
+                <h2 class="section-title text-white">5. Rutina de <span class="gradient-text">Entrenamiento Semanal</span></h2>
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 overflow-x-auto">
+                    <table class="w-full text-left text-sm">
+                        <thead class="border-b border-slate-600 text-slate-300">
+                            <tr>
+                                <th class="p-3">Día</th>
+                                <th class="p-3">Actividad de Prompting</th>
+                                <th class="p-3">Objetivo</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-slate-400">
+                            <tr class="border-b border-slate-700">
+                                <td class="p-3 font-semibold text-white">Lunes</td>
+                                <td class="p-3">Repaso de conceptos y guías</td>
+                                <td class="p-3">Reforzar base teórica.</td>
+                            </tr>
+                             <tr class="border-b border-slate-700">
+                                <td class="p-3 font-semibold text-white">Miércoles</td>
+                                <td class="p-3">Práctica de preguntas tipo ENARM</td>
+                                <td class="p-3">Consolidar conocimiento y autoevaluarse.</td>
+                            </tr>
+                             <tr class="border-b border-slate-700">
+                                <td class="p-3 font-semibold text-white">Viernes</td>
+                                <td class="p-3">Simulación interactiva de caso</td>
+                                <td class="p-3">Afianzar razonamiento y confianza clínica.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold text-white">Domingo</td>
+                                <td class="p-3">Meta-reflexión y mejora de prompts</td>
+                                <td class="p-3">Analizar y refinar la técnica de prompting.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            
+            <!-- Planes de Estudio -->
+            <section id="planes">
+                <h2 class="section-title text-white">Planes de <span class="gradient-text">Estudio y Práctica</span></h2>
+                <p class="text-center max-w-2xl mx-auto -mt-4 mb-12 text-slate-400">Elige tu camino para convertirte en un experto en prompting clínico. Comienza gratis y explora todo el contenido.</p>
+                <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <!-- Plan Básico -->
+                    <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 flex flex-col">
+                        <h3 class="text-2xl font-bold text-white">Nivel Básico</h3>
+                        <p class="text-slate-400 mb-6">Estudiante Curioso</p>
+                        <div class="text-4xl font-extrabold text-white mb-6">Gratis</div>
+                        <ul class="space-y-3 text-slate-300 flex-grow mb-8">
+                            <li class="flex items-center space-x-2"><i data-lucide="check" class="text-green-500"></i><span>Acceso completo a la guía</span></li>
+                            <li class="flex items-center space-x-2"><i data-lucide="check" class="text-green-500"></i><span>Todas las plantillas de prompts</span></li>
+                            <li class="flex items-center space-x-2"><i data-lucide="check" class="text-green-500"></i><span>Casos de uso detallados</span></li>
+                             <li class="flex items-center space-x-2"><i data-lucide="check" class="text-green-500"></i><span>Rutina de entrenamiento</span></li>
+                        </ul>
+                        <a href="#guia" class="w-full text-center bg-slate-700 text-white py-3 rounded-lg font-semibold hover:bg-slate-600 transition-colors">Comenzar Ahora</a>
+                    </div>
+                    <!-- Plan Intermedio (Popular) -->
+                    <div class="bg-sky-900 p-8 rounded-2xl border-2 border-sky-500 flex flex-col relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-sky-500 text-white text-xs font-bold px-4 py-1 rounded-bl-lg">POPULAR</div>
+                        <h3 class="text-2xl font-bold text-white">Nivel Intermedio</h3>
+                        <p class="text-sky-300 mb-6">Residente Proactivo</p>
+                         <div class="text-4xl font-extrabold text-white mb-6">$12 <span class="text-base font-normal text-slate-400">/ mes</span></div>
+                        <ul class="space-y-3 text-slate-300 flex-grow mb-8">
+                            <li class="flex items-center space-x-2"><i data-lucide="check" class="text-sky-400"></i><span>Todo lo del Nivel Básico, y...</span></li>
+                            <li class="flex items-center space-x-2"><i data-lucide="check" class="text-sky-400"></i><span>Nuevas plantillas de prompts cada mes</span></li>
+                            <li class="flex items-center space-x-2"><i data-lucide="check" class="text-sky-400"></i><span>Casos clínicos interactivos exclusivos</span></li>
+                            <li class="flex items-center space-x-2"><i data-lucide="check" class="text-sky-400"></i><span>Acceso a foro comunitario</span></li>
+                        </ul>
+                        <button class="w-full text-center bg-sky-500 text-white py-3 rounded-lg font-semibold hover:bg-sky-600 transition-colors">Próximamente</button>
+                    </div>
+                    <!-- Plan Avanzado -->
+                    <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 flex flex-col">
+                        <h3 class="text-2xl font-bold text-white">Nivel Avanzado</h3>
+                        <p class="text-slate-400 mb-6">Experto Clínico</p>
+                         <div class="text-4xl font-extrabold text-white mb-6">$49 <span class="text-base font-normal text-slate-400">/ mes</span></div>
+                        <ul class="space-y-3 text-slate-300 flex-grow mb-8">
+                            <li class="flex items-center space-x-2"><i data-lucide="check" class="text-green-500"></i><span>Todo lo del Nivel Intermedio, y...</span></li>
+                            <li class="flex items-center space-x-2"><i data-lucide="check" class="text-green-500"></i><span>Sesiones de coaching en vivo</span></li>
+                            <li class="flex items-center space-x-2"><i data-lucide="check" class="text-green-500"></i><span>Análisis de prompts personalizados</span></li>
+                            <li class="flex items-center space-x-2"><i data-lucide="check" class="text-green-500"></i><span>Certificado de finalización</span></li>
+                        </ul>
+                        <button class="w-full text-center bg-slate-700 text-white py-3 rounded-lg font-semibold hover:bg-slate-600 transition-colors">Próximamente</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 mt-20">
+        <div class="container mx-auto px-6 py-8 text-center text-slate-500 text-sm">
+            <p>&copy; 2025 Prompting Clínico Pro. Creado como una herramienta educativa.</p>
+            <p class="mt-2">La información de este sitio es para fines de aprendizaje y no debe sustituir el juicio clínico profesional.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script>
+        lucide.createIcons();
+
+        function copyPrompt(elementId) {
+            const preElement = document.getElementById(elementId);
+            const textToCopy = preElement.innerText;
+            
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const button = preElement.nextElementSibling;
+                const originalText = button.innerHTML;
+                button.innerHTML = '<i data-lucide="check-square"></i><span>¡Copiado!</span>';
+                lucide.createIcons();
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    lucide.createIcons();
+                }, 2000);
+            }).catch(err => {
+                console.error('Error al copiar: ', err);
+            });
+    </script>
+</body>
+</html>
